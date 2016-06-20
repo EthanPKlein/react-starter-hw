@@ -24,7 +24,7 @@ var Users = React.createClass({
       var self = this;
       $.getJSON('/data.json').done(function (data) {
         userList = data.list;
-        self.setState({
+        self.setState({ // bind also works here if desired
             list : data.list
         });
       });
@@ -59,12 +59,23 @@ var UsersDetail = React.createClass({
   }
 });
 
+var Ethan = React.createClass({
+    render: function() {
+        return (
+                <div>
+                  Ethan route ftw!!!!!
+                </div>
+        );
+  }
+});
+
 var MainLayout = React.createClass({
     render: function() {
         return (<div>
                   <span>Header:</span>
                   <Link to="/">Home</Link> |
-                  <Link to="/users">Users</Link>
+                  <Link to="/users">Users</Link> | 
+				  <Link to="/Ethan">Ethan!!!</Link>
                   <hr/>
                   <div>
                     <h2>Body Content</h2>
@@ -75,10 +86,12 @@ var MainLayout = React.createClass({
     }
 });
 
+// custom element by React-Router
 ReactDOM.render((
   <Router>
     <Route component={MainLayout}>
       <Route path="/" component={Home} />
+	  <Route path="/Ethan" component={Ethan} />
       <Route path="/users" component={Users} />
       <Route path="/users/:id" component={UsersDetail} />
     </Route>

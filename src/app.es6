@@ -61,9 +61,10 @@ var UsersDetail = React.createClass({
 
 var Ethan = React.createClass({
     render: function() {
+		var id = this.props.params.id;
         return (
                 <div>
-                  Ethan route ftw!!!!!
+                  Ethan route ftw!!!!!  You specified {id}
                 </div>
         );
   }
@@ -75,7 +76,7 @@ var MainLayout = React.createClass({
                   <span>Header:</span>
                   <Link to="/">Home</Link> |
                   <Link to="/users">Users</Link> | 
-				  <Link to="/Ethan">Ethan!!!</Link>
+				  <Link to="/Ethan/hello">Ethan!!!</Link>
                   <hr/>
                   <div>
                     <h2>Body Content</h2>
@@ -91,7 +92,7 @@ ReactDOM.render((
   <Router>
     <Route component={MainLayout}>
       <Route path="/" component={Home} />
-	  <Route path="/Ethan" component={Ethan} />
+	  <Route path="/Ethan/:id" component={Ethan} />
       <Route path="/users" component={Users} />
       <Route path="/users/:id" component={UsersDetail} />
     </Route>
